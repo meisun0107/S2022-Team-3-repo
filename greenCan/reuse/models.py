@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.db import models
 from greenCan.account.models import Account
 from greenCan.recycle.models import ZipCode
@@ -14,6 +15,7 @@ class Post(models.Model):
     user = models.ForeignKey(Account, null=False, on_delete=models.CASCADE)
     approved = models.BooleanField(null=True, default=False)
     still_available = models.BooleanField(null=True, default=True)
+    create_on = models.DateTimeField(default=datetime.datetime.now())
 
     def __str__(self):
         return str(self.id)
